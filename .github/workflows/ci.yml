@@ -1,0 +1,31 @@
+# CI: unit tests (no API key) + a full pipeline smoke via the mock agent.
+#
+# To gate merges on a LIVE evaluation, add ANTHROPIC_API_KEY to the repo
+# secrets and uncomment the last step — the harness exits non-zero when
+# any reliability threshold is breached, failing the build.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Unit tests (mocked agent, no API calls)
+        run: python -m pytest tests/ -q
+      - name: Pipeline smoke test (runner → validators → report, mock agent)
+        run: python scripts/generate_sample_results.py
+
+      # - name: Live evaluation gate
+      #   env:
+      #     ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      #   run: python -m harness run --suite cases.yaml --runs 3

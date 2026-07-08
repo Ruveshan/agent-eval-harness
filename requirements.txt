@@ -1,0 +1,8 @@
+anthropic>=0.40
+pydantic>=2.7
+PyYAML>=6.0
+rich>=13.7
+streamlit>=1.49
+pandas>=2.0
+altair>=5.0
+pytest>=8.0
