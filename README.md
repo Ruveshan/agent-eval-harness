@@ -143,9 +143,10 @@ every run's raw output vs. expected.
 
 ### Deploy on Streamlit Community Cloud (free)
 
-1. Push this repo to GitHub.
-2. At [share.streamlit.io](https://share.streamlit.io) → **New app**, pick the
-   repo, branch `main`, main file `dashboard/app.py`.
+1. At [share.streamlit.io](https://share.streamlit.io) → sign in with GitHub
+   → **Create app** → "Deploy a public app from GitHub".
+2. Repository `Ruveshan/agent-eval-harness`, branch `main`, main file path
+   `dashboard/app.py`; pick a custom subdomain if you want a nicer URL.
 3. Deploy. No secrets needed — the app is read-only over committed files.
 4. To refresh the data, run the suite locally and commit the new
    `results.json` + `report.md`; the app redeploys on push.

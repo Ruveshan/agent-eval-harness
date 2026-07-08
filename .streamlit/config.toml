@@ -1,0 +1,3 @@
+# Applies both locally and on Streamlit Community Cloud.
+[browser]
+gatherUsageStats = false
