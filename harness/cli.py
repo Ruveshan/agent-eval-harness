@@ -52,6 +52,9 @@ def build_parser() -> argparse.ArgumentParser:
     run = sub.add_parser("run", help="Run a test suite against the agent")
     run.add_argument("--suite", type=Path, default=Path("cases.yaml"),
                      help="YAML suite file (default: cases.yaml)")
+    run.add_argument("--agent", choices=["gemini", "claude"], default="gemini",
+                     help="Which provider implementation to evaluate "
+                          "(default: gemini — free API tier)")
     run.add_argument("--runs", type=int, default=3,
                      help="Runs per case for consistency measurement (default: 3)")
     run.add_argument("--concurrency", type=int, default=5,
@@ -72,12 +75,16 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def _make_agent():
+def _make_agent(kind: str):
     """Imported lazily so `--help`, tests, and the dashboard never require
-    the anthropic package or an API key."""
-    from agents.transaction_agent import TransactionAgent
+    a provider SDK or an API key."""
+    if kind == "claude":
+        from agents.transaction_agent import TransactionAgent
 
-    return TransactionAgent()
+        return TransactionAgent()
+    from agents.gemini_agent import GeminiTransactionAgent
+
+    return GeminiTransactionAgent()
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -91,7 +98,7 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     try:
-        agent = _make_agent()
+        agent = _make_agent(args.agent)
     except Exception as exc:  # missing key, missing package, etc.
         console.print(f"[red]Failed to construct agent:[/red] {exc}")
         return 2

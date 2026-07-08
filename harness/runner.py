@@ -32,11 +32,28 @@ from pydantic import ValidationError
 
 from .models import AgentOutput, AgentResponse, CaseResult, RunRecord, TestCase
 
-# USD per million tokens (input, output). Used for cost attribution; an
-# unknown model simply reports $0 rather than guessing.
+# USD per million tokens (input, output) at each provider's paid tier.
+# Used for cost attribution; an unknown model simply reports $0 rather
+# than guessing. Note for free-tier runs (e.g. Gemini's free API tier):
+# the figure shows what the run *would* cost at paid rates — actual spend
+# is $0, but the equivalent cost is the number you'd budget for scale.
 PRICING_USD_PER_MTOK: dict[str, tuple[float, float]] = {
+    "gemini-2.5-flash-lite": (0.10, 0.40),
+    "gemini-2.5-flash": (0.30, 2.50),
     "claude-sonnet-4-6": (3.00, 15.00),
 }
+
+
+class TransientAgentError(Exception):
+    """Marker for provider failures that a retry can plausibly fix.
+
+    Exists because the harness's retry contract is type-based, and not
+    every SDK cooperates: google-genai raises one `APIError` family for
+    both a retryable 429 and a fatal 401, distinguishable only by code.
+    An agent facing such an SDK catches the provider error and re-raises
+    the transient ones as this type; the harness never needs to know
+    provider status codes.
+    """
 
 
 @runtime_checkable
@@ -67,12 +84,14 @@ class RetryPolicy:
 
     Jitter matters under concurrency: without it, every coroutine that
     hit the same 429 sleeps the same duration and stampedes the API
-    again in lockstep.
+    again in lockstep. The defaults are sized so the cumulative backoff
+    (~60s worst case) can ride out a per-minute quota window — the shape
+    of free-tier rate limits like Gemini's.
     """
 
-    max_attempts: int = 4
-    base_delay_s: float = 1.0
-    max_delay_s: float = 30.0
+    max_attempts: int = 6
+    base_delay_s: float = 2.0
+    max_delay_s: float = 60.0
 
     def delay(self, attempt: int) -> float:
         capped = min(self.max_delay_s, self.base_delay_s * (2**attempt))

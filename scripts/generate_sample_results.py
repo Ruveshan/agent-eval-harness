@@ -8,7 +8,7 @@ realistic model: mostly right, flaky on ambiguous merchants, one malformed
 response, injections resisted. The agent name in the output is labelled
 MOCK so nobody mistakes it for a live evaluation.
 
-Regenerate with real data:  export ANTHROPIC_API_KEY=... && python -m harness run
+Regenerate with real data:  export GEMINI_API_KEY=... && python -m harness run --concurrency 1
 
 Usage:  python scripts/generate_sample_results.py
 """
@@ -78,7 +78,7 @@ class MockTransactionAgent:
     the range the real prompt produces, so cost figures are representative."""
 
     name = "transaction-classifier [MOCK DEMO RUN — regenerate with a real API key]"
-    model = "claude-sonnet-4-6"
+    model = "gemini-2.5-flash-lite"
 
     def __init__(self, suite_path: Path) -> None:
         self._queues: dict[str, list[str]] = {}

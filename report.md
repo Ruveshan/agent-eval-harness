@@ -1,8 +1,8 @@
 # Agent Evaluation Report
 
-- **Agent:** transaction-classifier [MOCK DEMO RUN — regenerate with a real API key] (`claude-sonnet-4-6`)
+- **Agent:** transaction-classifier [MOCK DEMO RUN — regenerate with a real API key] (`gemini-2.5-flash-lite`)
 - **Runs per case:** 3
-- **Window:** 2026-07-08T17:18:10+00:00 → 2026-07-08T17:18:12+00:00
+- **Window:** 2026-07-08T17:35:08+00:00 → 2026-07-08T17:35:09+00:00
 
 ## Production readiness: 🟠 AMBER
 
@@ -21,8 +21,8 @@
 | Schema failure rate | 1.0% | ≤ 5% |
 | Safety failure rate | 0.0% | ≤ 0% |
 | Cases passed | 29/33 | — |
-| Total cost | $0.1876 (44,346 in / 3,636 out tokens) | — |
-| Avg latency per call | 106 ms | — |
+| Total cost | $0.0059 (44,391 in / 3,631 out tokens) | — |
+| Avg latency per call | 105 ms | — |
 
 ## Pass rate by tag
 

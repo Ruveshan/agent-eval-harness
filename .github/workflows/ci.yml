@@ -1,8 +1,9 @@
 # CI: unit tests (no API key) + a full pipeline smoke via the mock agent.
 #
-# To gate merges on a LIVE evaluation, add ANTHROPIC_API_KEY to the repo
-# secrets and uncomment the last step — the harness exits non-zero when
-# any reliability threshold is breached, failing the build.
+# To gate merges on a LIVE evaluation, add GEMINI_API_KEY (free tier —
+# aistudio.google.com/apikey) to the repo secrets and uncomment the last
+# step — the harness exits non-zero when any reliability threshold is
+# breached, failing the build.
 name: CI
 
 on:
@@ -27,5 +28,5 @@ jobs:
 
       # - name: Live evaluation gate
       #   env:
-      #     ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      #   run: python -m harness run --suite cases.yaml --runs 3
+      #     GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      #   run: python -m harness run --suite cases.yaml --runs 3 --concurrency 1
