@@ -2,6 +2,9 @@
 
 [![CI](https://github.com/Ruveshan/agent-eval-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/Ruveshan/agent-eval-harness/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Live dashboard](https://img.shields.io/badge/Live_dashboard-agent--eval--harness.streamlit.app-FF4B4B?logo=streamlit)](https://agent-eval-harness.streamlit.app)
+
+**▶ Live dashboard: [agent-eval-harness.streamlit.app](https://agent-eval-harness.streamlit.app)**
 
 A Python framework that answers one question: **is this LLM agent reliable
 enough to put in front of real money?**
