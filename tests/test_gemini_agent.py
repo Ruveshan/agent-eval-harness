@@ -59,6 +59,26 @@ def test_auth_error_propagates_untranslated():
     assert not isinstance(excinfo.value, TransientAgentError)
 
 
+def test_429_carries_googles_retry_after_hint():
+    exc = _FakeAPIError(429)
+    exc.args = (
+        "429 RESOURCE_EXHAUSTED. Quota exceeded for metric: "
+        "generate_content_free_tier_requests, limit: 20. "
+        "Please retry in 5.094392542s.",
+    )
+    agent = GeminiTransactionAgent(client=_stub_client(exc=exc))
+    with pytest.raises(TransientAgentError) as excinfo:
+        asyncio.run(agent.run("UBER TRIP"))
+    assert excinfo.value.retry_after_s == pytest.approx(5.094, abs=0.01)
+
+
+def test_hint_is_none_when_message_has_no_retry_delay():
+    agent = GeminiTransactionAgent(client=_stub_client(exc=_FakeAPIError(503)))
+    with pytest.raises(TransientAgentError) as excinfo:
+        asyncio.run(agent.run("UBER TRIP"))
+    assert excinfo.value.retry_after_s is None
+
+
 def test_success_maps_text_and_usage():
     response = SimpleNamespace(
         text='{"category": "transport", "merchant": "Uber", "confidence": 0.95}',

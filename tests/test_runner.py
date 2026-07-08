@@ -79,6 +79,19 @@ class TestRetries:
         assert "ConnectionError" in run.error
         assert agent.calls == FAST_RETRIES.max_attempts
 
+    def test_transient_error_with_hint_still_retries_to_success(self):
+        from harness.runner import TransientAgentError
+
+        agent = ScriptedAgent(
+            [
+                TransientAgentError("quota window", retry_after_s=0.01),
+                output_json("transport"),
+            ]
+        )
+        agent.retryable_exceptions = (TransientAgentError,)
+        result = run_case(agent, make_case(expected_category="transport"), runs=1)
+        assert result.runs[0].parsed is not None and result.runs[0].retries == 1
+
     def test_non_retryable_errors_fail_fast(self):
         # Agent declares only ConnectionError as transient; a ValueError
         # (think: 401 auth) must be recorded immediately with no retries.

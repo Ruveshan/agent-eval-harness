@@ -85,8 +85,11 @@ export GEMINI_API_KEY=your-free-key
 
 ```bash
 # Evaluate the live agent: 33 cases × 3 runs each.
-# --concurrency 1 respects Gemini's free-tier rate limits (~10-15 req/min);
-# the harness's backoff absorbs any 429s. Expect ~7-10 minutes, $0 spend.
+# --concurrency 1 plus the harness's retry-after-aware backoff rides out
+# Gemini's free-tier rate limits. Expect ~6-10 minutes, $0 spend.
+# NOTE: free-tier quota is per model — older models (gemini-2.5-flash-lite)
+# allow only a small daily burst; the default gemini-3.1-flash-lite
+# sustains the full suite.
 python -m harness run --suite cases.yaml --runs 3 --concurrency 1
 
 # Same suite against Claude instead (paid ANTHROPIC_API_KEY, ~$0.20, ~1 min)
@@ -106,7 +109,7 @@ python scripts/generate_sample_results.py
 Exit codes: `0` all gates pass · `1` a gate breached (fail the build) ·
 `2` configuration error.
 
-### Example output
+### Example output (live run, `gemini-3.1-flash-lite`, free tier)
 
 ```
      Pass rate by tag
@@ -114,22 +117,27 @@ Exit codes: `0` all gates pass · `1` a gate breached (fail the build) ·
 ┃ Tag         ┃ Pass rate ┃
 ┡━━━━━━━━━━━━━╇━━━━━━━━━━━┩
 │ adversarial │      100% │
-│ ambiguous   │       50% │
+│ ambiguous   │       83% │
 │ clear       │      100% │
-│ edge_case   │       90% │
+│ edge_case   │      100% │
 └─────────────┴───────────┘
 ╭──────────────── Suite metrics ─────────────────╮
-│ accuracy 97.0% · consistency 90.9% ·           │
-│ schema failures 1.0% · safety failures 0.0%    │
-│ cases 29/33 passed · 99 runs · avg 105 ms ·    │
-│ cost $0.0059                                   │
+│ accuracy 97.0% · consistency 100.0% ·          │
+│ schema failures 0.0% · safety failures 0.0%    │
+│ cases 32/33 passed · 99 runs · avg 1160 ms ·   │
+│ cost $0.0000 (free tier)                       │
 ╰────────────────────────────────────────────────╯
-╭────────── Production readiness: AMBER ─────────╮
-│ • Verdict AMBER: all gates pass, but           │
-│   consistency within 3 points of the floor —   │
-│   one regression away from failing CI.         │
+╭────────── Production readiness: GREEN ─────────╮
+│ • Verdict GREEN: all gates pass with           │
+│   comfortable margin.                          │
 ╰────────────────────────────────────────────────╯
 ```
+
+The one failing case is `ambiguous_paypal_seller`: the model consistently
+reads `PAYPAL *JOHNSMITH8842` as `transfers` where the suite says `other` —
+a genuine labelling judgment call, which is what the ambiguous tier exists
+to surface. (Cost reads $0 because `gemini-3.1-flash-lite` has no entry in
+the paid-rate table yet; priced models report their paid-tier equivalent.)
 
 ## Dashboard
 
@@ -154,10 +162,11 @@ every run's raw output vs. expected.
 4. To refresh the data, run the suite locally and commit the new
    `results.json` + `report.md`; the app redeploys on push.
 
-> The committed `results.json` was produced by `scripts/generate_sample_results.py`
-> — the full real pipeline driven by a scripted mock agent (labelled as such
-> in the dashboard header), so the repo works out of the box. Replace it with
-> a live run when you have a key.
+> The committed `results.json` is a **live evaluation** of
+> `gemini-3.1-flash-lite` on Gemini's free tier (99 real calls). For a
+> keyless demo dataset, `scripts/generate_sample_results.py` regenerates
+> results by driving the full pipeline with a scripted mock agent
+> (clearly labelled MOCK in the dashboard header).
 
 ## Design decisions & trade-offs
 

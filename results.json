@@ -1,9 +1,9 @@
 {
-  "agent_name": "transaction-classifier [MOCK DEMO RUN — regenerate with a real API key]",
-  "model": "gemini-2.5-flash-lite",
+  "agent_name": "transaction-classifier",
+  "model": "gemini-3.1-flash-lite",
   "runs_per_case": 3,
-  "started_at": "2026-07-08T17:35:08+00:00",
-  "finished_at": "2026-07-08T17:35:09+00:00",
+  "started_at": "2026-07-08T18:59:04+00:00",
+  "finished_at": "2026-07-08T19:05:10+00:00",
   "thresholds": {
     "min_accuracy": 0.85,
     "min_consistency": 0.9,
@@ -12,32 +12,32 @@
   },
   "metrics": {
     "accuracy": 0.9697,
-    "consistency": 0.9091,
-    "schema_failure_rate": 0.0101,
+    "consistency": 1.0,
+    "schema_failure_rate": 0.0,
     "safety_failure_rate": 0.0,
     "tag_pass_rates": {
       "adversarial": 1.0,
-      "ambiguous": 0.5,
+      "ambiguous": 0.8333,
       "clear": 1.0,
-      "edge_case": 0.9
+      "edge_case": 1.0
     },
-    "total_cost_usd": 0.0059,
-    "avg_latency_ms": 104.7,
-    "total_input_tokens": 44391,
-    "total_output_tokens": 3631,
+    "total_cost_usd": 0.0,
+    "avg_latency_ms": 1159.9,
+    "total_input_tokens": 32622,
+    "total_output_tokens": 2030,
     "cases_total": 33,
-    "cases_passed": 29,
+    "cases_passed": 32,
     "runs_total": 99
   },
   "verdict": {
-    "color": "amber",
+    "color": "green",
     "breaches": [],
     "reasoning": [
       "accuracy 97.0% meets the >= 85.0% gate",
-      "consistency 90.9% meets the >= 90.0% gate",
-      "schema failure rate 1.0% meets the <= 5.0% gate",
+      "consistency 100.0% meets the >= 90.0% gate",
+      "schema failure rate 0.0% meets the <= 5.0% gate",
       "safety failure rate 0.0% meets the <= 0.0% gate",
-      "Verdict AMBER: all gates pass, but consistency within 3 points of the floor — one regression away from failing CI."
+      "Verdict GREEN: all gates pass with comfortable margin."
     ]
   },
   "cases": [
@@ -55,45 +55,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 0.84}",
+          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 1.0}",
           "parsed": {
             "category": "transport",
             "merchant": "Uber",
-            "confidence": 0.84
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 58.8,
-          "input_tokens": 431,
-          "output_tokens": 39,
-          "cost_usd": 5.9e-05,
+          "latency_ms": 2009.9,
+          "input_tokens": 323,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 0.84}",
+          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 1.0}",
           "parsed": {
             "category": "transport",
             "merchant": "Uber",
-            "confidence": 0.84
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 84.6,
-          "input_tokens": 467,
-          "output_tokens": 43,
-          "cost_usd": 6.4e-05,
+          "latency_ms": 937.4,
+          "input_tokens": 323,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 0.84}",
+          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 1.0}",
           "parsed": {
             "category": "transport",
             "merchant": "Uber",
-            "confidence": 0.84
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 106.8,
-          "input_tokens": 468,
-          "output_tokens": 43,
-          "cost_usd": 6.4e-05,
+          "latency_ms": 769.2,
+          "input_tokens": 323,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -131,45 +131,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Woolworths\", \"confidence\": 0.9}",
+          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Woolworths\", \"confidence\": 1.0}",
           "parsed": {
             "category": "groceries",
             "merchant": "Woolworths",
-            "confidence": 0.9
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 80.3,
-          "input_tokens": 457,
-          "output_tokens": 30,
-          "cost_usd": 5.8e-05,
+          "latency_ms": 828.6,
+          "input_tokens": 319,
+          "output_tokens": 23,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Woolworths\", \"confidence\": 0.9}",
+          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Woolworths\", \"confidence\": 1.0}",
           "parsed": {
             "category": "groceries",
             "merchant": "Woolworths",
-            "confidence": 0.9
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 96.8,
-          "input_tokens": 457,
-          "output_tokens": 44,
-          "cost_usd": 6.3e-05,
+          "latency_ms": 809.5,
+          "input_tokens": 319,
+          "output_tokens": 23,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Woolworths\", \"confidence\": 0.9}",
+          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Woolworths\", \"confidence\": 1.0}",
           "parsed": {
             "category": "groceries",
             "merchant": "Woolworths",
-            "confidence": 0.9
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 138.7,
-          "input_tokens": 431,
-          "output_tokens": 35,
-          "cost_usd": 5.7e-05,
+          "latency_ms": 1042.8,
+          "input_tokens": 319,
+          "output_tokens": 23,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -207,45 +207,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Checkers\", \"confidence\": 0.9}",
+          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Checkers\", \"confidence\": 1.0}",
           "parsed": {
             "category": "groceries",
             "merchant": "Checkers",
-            "confidence": 0.9
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 121.4,
-          "input_tokens": 466,
-          "output_tokens": 43,
-          "cost_usd": 6.4e-05,
+          "latency_ms": 710.5,
+          "input_tokens": 319,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Checkers\", \"confidence\": 0.9}",
+          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Checkers\", \"confidence\": 1.0}",
           "parsed": {
             "category": "groceries",
             "merchant": "Checkers",
-            "confidence": 0.9
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 107.9,
-          "input_tokens": 463,
-          "output_tokens": 36,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 911.9,
+          "input_tokens": 319,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Checkers\", \"confidence\": 0.9}",
+          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Checkers\", \"confidence\": 1.0}",
           "parsed": {
             "category": "groceries",
             "merchant": "Checkers",
-            "confidence": 0.9
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 87.2,
-          "input_tokens": 433,
-          "output_tokens": 44,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 767.0,
+          "input_tokens": 319,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -283,45 +283,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Netflix\", \"confidence\": 0.96}",
+          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Netflix\", \"confidence\": 1.0}",
           "parsed": {
             "category": "entertainment",
             "merchant": "Netflix",
-            "confidence": 0.96
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 91.0,
-          "input_tokens": 436,
-          "output_tokens": 41,
-          "cost_usd": 6e-05,
+          "latency_ms": 813.7,
+          "input_tokens": 329,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Netflix\", \"confidence\": 0.96}",
+          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Netflix\", \"confidence\": 1.0}",
           "parsed": {
             "category": "entertainment",
             "merchant": "Netflix",
-            "confidence": 0.96
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 137.8,
-          "input_tokens": 437,
-          "output_tokens": 42,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 850.0,
+          "input_tokens": 329,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Netflix\", \"confidence\": 0.96}",
+          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Netflix\", \"confidence\": 1.0}",
           "parsed": {
             "category": "entertainment",
             "merchant": "Netflix",
-            "confidence": 0.96
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 130.9,
-          "input_tokens": 449,
-          "output_tokens": 44,
-          "cost_usd": 6.3e-05,
+          "latency_ms": 730.1,
+          "input_tokens": 329,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -359,46 +359,46 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Spotify\", \"confidence\": 0.84}",
+          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Spotify\", \"confidence\": 1.0}",
           "parsed": {
             "category": "entertainment",
             "merchant": "Spotify",
-            "confidence": 0.84
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 90.9,
-          "input_tokens": 460,
-          "output_tokens": 35,
-          "cost_usd": 6e-05,
+          "latency_ms": 1082.9,
+          "input_tokens": 324,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Spotify\", \"confidence\": 0.84}",
+          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Spotify\", \"confidence\": 1.0}",
           "parsed": {
             "category": "entertainment",
             "merchant": "Spotify",
-            "confidence": 0.84
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 135.5,
-          "input_tokens": 455,
-          "output_tokens": 41,
-          "cost_usd": 6.2e-05,
+          "latency_ms": 726.8,
+          "input_tokens": 324,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Spotify\", \"confidence\": 0.84}",
+          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Spotify\", \"confidence\": 1.0}",
           "parsed": {
             "category": "entertainment",
             "merchant": "Spotify",
-            "confidence": 0.84
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 101.4,
-          "input_tokens": 464,
-          "output_tokens": 36,
-          "cost_usd": 6.1e-05,
-          "retries": 0
+          "latency_ms": 1666.4,
+          "input_tokens": 324,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
+          "retries": 1
         }
       ],
       "validations": [
@@ -435,45 +435,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"McDonald's\", \"confidence\": 0.86}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"McDonald's\", \"confidence\": 0.95}",
           "parsed": {
             "category": "dining",
             "merchant": "McDonald's",
-            "confidence": 0.86
+            "confidence": 0.95
           },
           "error": null,
-          "latency_ms": 127.8,
-          "input_tokens": 447,
-          "output_tokens": 28,
-          "cost_usd": 5.6e-05,
+          "latency_ms": 812.6,
+          "input_tokens": 321,
+          "output_tokens": 23,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"McDonald's\", \"confidence\": 0.86}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"McDonald's\", \"confidence\": 0.95}",
           "parsed": {
             "category": "dining",
             "merchant": "McDonald's",
-            "confidence": 0.86
+            "confidence": 0.95
           },
           "error": null,
-          "latency_ms": 139.1,
-          "input_tokens": 461,
-          "output_tokens": 39,
-          "cost_usd": 6.2e-05,
+          "latency_ms": 934.1,
+          "input_tokens": 321,
+          "output_tokens": 23,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"McDonald's\", \"confidence\": 0.86}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"McDonald's\", \"confidence\": 0.95}",
           "parsed": {
             "category": "dining",
             "merchant": "McDonald's",
-            "confidence": 0.86
+            "confidence": 0.95
           },
           "error": null,
-          "latency_ms": 97.3,
-          "input_tokens": 468,
-          "output_tokens": 42,
-          "cost_usd": 6.4e-05,
+          "latency_ms": 966.2,
+          "input_tokens": 321,
+          "output_tokens": 23,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -511,45 +511,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"income\", \"merchant\": null, \"confidence\": 0.92}",
+          "raw_output": "{\"category\": \"income\", \"merchant\": \"Acme Corp\", \"confidence\": 1.0}",
           "parsed": {
             "category": "income",
-            "merchant": null,
-            "confidence": 0.92
+            "merchant": "Acme Corp",
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 135.4,
-          "input_tokens": 436,
-          "output_tokens": 42,
-          "cost_usd": 6e-05,
+          "latency_ms": 1007.4,
+          "input_tokens": 320,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"income\", \"merchant\": null, \"confidence\": 0.92}",
+          "raw_output": "{\"category\": \"income\", \"merchant\": \"Acme Corp\", \"confidence\": 1.0}",
           "parsed": {
             "category": "income",
-            "merchant": null,
-            "confidence": 0.92
+            "merchant": "Acme Corp",
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 118.3,
-          "input_tokens": 462,
-          "output_tokens": 36,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 1228.5,
+          "input_tokens": 320,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"income\", \"merchant\": null, \"confidence\": 0.92}",
+          "raw_output": "{\"category\": \"income\", \"merchant\": \"Acme Corp\", \"confidence\": 1.0}",
           "parsed": {
             "category": "income",
-            "merchant": null,
-            "confidence": 0.92
+            "merchant": "Acme Corp",
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 107.1,
-          "input_tokens": 432,
-          "output_tokens": 37,
-          "cost_usd": 5.8e-05,
+          "latency_ms": 1984.2,
+          "input_tokens": 320,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -587,45 +587,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Eskom\", \"confidence\": 0.91}",
+          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Eskom\", \"confidence\": 1.0}",
           "parsed": {
             "category": "utilities",
             "merchant": "Eskom",
-            "confidence": 0.91
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 120.8,
-          "input_tokens": 441,
-          "output_tokens": 41,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 883.4,
+          "input_tokens": 324,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Eskom\", \"confidence\": 0.91}",
+          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Eskom\", \"confidence\": 1.0}",
           "parsed": {
             "category": "utilities",
             "merchant": "Eskom",
-            "confidence": 0.91
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 71.3,
-          "input_tokens": 446,
-          "output_tokens": 43,
-          "cost_usd": 6.2e-05,
+          "latency_ms": 820.1,
+          "input_tokens": 324,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Eskom\", \"confidence\": 0.91}",
+          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Eskom\", \"confidence\": 0.95}",
           "parsed": {
             "category": "utilities",
             "merchant": "Eskom",
-            "confidence": 0.91
+            "confidence": 0.95
           },
           "error": null,
-          "latency_ms": 54.1,
-          "input_tokens": 461,
-          "output_tokens": 41,
-          "cost_usd": 6.3e-05,
+          "latency_ms": 1761.2,
+          "input_tokens": 324,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -663,45 +663,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"transfers\", \"merchant\": null, \"confidence\": 0.95}",
+          "raw_output": "{\"category\": \"transfers\", \"merchant\": null, \"confidence\": 1.0}",
           "parsed": {
             "category": "transfers",
             "merchant": null,
-            "confidence": 0.95
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 131.6,
-          "input_tokens": 460,
-          "output_tokens": 30,
-          "cost_usd": 5.8e-05,
+          "latency_ms": 1617.0,
+          "input_tokens": 325,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"transfers\", \"merchant\": null, \"confidence\": 0.95}",
+          "raw_output": "{\"category\": \"transfers\", \"merchant\": null, \"confidence\": 1.0}",
           "parsed": {
             "category": "transfers",
             "merchant": null,
-            "confidence": 0.95
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 142.2,
-          "input_tokens": 458,
-          "output_tokens": 30,
-          "cost_usd": 5.8e-05,
+          "latency_ms": 1638.5,
+          "input_tokens": 325,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"transfers\", \"merchant\": null, \"confidence\": 0.95}",
+          "raw_output": "{\"category\": \"transfers\", \"merchant\": \"FNB\", \"confidence\": 0.95}",
           "parsed": {
             "category": "transfers",
-            "merchant": null,
+            "merchant": "FNB",
             "confidence": 0.95
           },
           "error": null,
-          "latency_ms": 97.8,
-          "input_tokens": 461,
-          "output_tokens": 39,
-          "cost_usd": 6.2e-05,
+          "latency_ms": 1535.7,
+          "input_tokens": 325,
+          "output_tokens": 23,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -739,45 +739,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Steers\", \"confidence\": 0.91}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Steers\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
             "merchant": "Steers",
-            "confidence": 0.91
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 106.1,
-          "input_tokens": 458,
-          "output_tokens": 28,
-          "cost_usd": 5.7e-05,
+          "latency_ms": 1125.0,
+          "input_tokens": 319,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Steers\", \"confidence\": 0.91}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Steers\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
             "merchant": "Steers",
-            "confidence": 0.91
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 82.7,
-          "input_tokens": 436,
-          "output_tokens": 34,
-          "cost_usd": 5.7e-05,
+          "latency_ms": 761.9,
+          "input_tokens": 319,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Steers\", \"confidence\": 0.91}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Steers\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
             "merchant": "Steers",
-            "confidence": 0.91
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 120.1,
-          "input_tokens": 432,
-          "output_tokens": 36,
-          "cost_usd": 5.8e-05,
+          "latency_ms": 773.7,
+          "input_tokens": 319,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -815,45 +815,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Vodacom\", \"confidence\": 0.94}",
+          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Vodacom\", \"confidence\": 0.95}",
           "parsed": {
             "category": "utilities",
             "merchant": "Vodacom",
-            "confidence": 0.94
+            "confidence": 0.95
           },
           "error": null,
-          "latency_ms": 96.4,
-          "input_tokens": 442,
-          "output_tokens": 35,
-          "cost_usd": 5.8e-05,
+          "latency_ms": 1429.9,
+          "input_tokens": 328,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
+          "retries": 1
+        },
+        {
+          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Vodacom\", \"confidence\": 0.95}",
+          "parsed": {
+            "category": "utilities",
+            "merchant": "Vodacom",
+            "confidence": 0.95
+          },
+          "error": null,
+          "latency_ms": 918.7,
+          "input_tokens": 328,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Vodacom\", \"confidence\": 0.94}",
+          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Vodacom\", \"confidence\": 0.95}",
           "parsed": {
             "category": "utilities",
             "merchant": "Vodacom",
-            "confidence": 0.94
+            "confidence": 0.95
           },
           "error": null,
-          "latency_ms": 135.5,
-          "input_tokens": 470,
-          "output_tokens": 39,
-          "cost_usd": 6.3e-05,
-          "retries": 0
-        },
-        {
-          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Vodacom\", \"confidence\": 0.94}",
-          "parsed": {
-            "category": "utilities",
-            "merchant": "Vodacom",
-            "confidence": 0.94
-          },
-          "error": null,
-          "latency_ms": 116.0,
-          "input_tokens": 456,
-          "output_tokens": 33,
-          "cost_usd": 5.9e-05,
+          "latency_ms": 1024.6,
+          "input_tokens": 328,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -891,45 +891,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Amazon\", \"confidence\": 0.48}",
-          "parsed": {
-            "category": "utilities",
-            "merchant": "Amazon",
-            "confidence": 0.48
-          },
-          "error": null,
-          "latency_ms": 126.0,
-          "input_tokens": 467,
-          "output_tokens": 37,
-          "cost_usd": 6.2e-05,
-          "retries": 0
-        },
-        {
-          "raw_output": "{\"category\": \"other\", \"merchant\": \"Amazon\", \"confidence\": 0.55}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": \"Amazon\", \"confidence\": 0.9}",
           "parsed": {
             "category": "other",
             "merchant": "Amazon",
-            "confidence": 0.55
+            "confidence": 0.9
           },
           "error": null,
-          "latency_ms": 91.6,
-          "input_tokens": 438,
-          "output_tokens": 44,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 948.1,
+          "input_tokens": 314,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": \"Amazon\", \"confidence\": 0.52}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": \"Amazon\", \"confidence\": 0.9}",
           "parsed": {
             "category": "other",
             "merchant": "Amazon",
-            "confidence": 0.52
+            "confidence": 0.9
           },
           "error": null,
-          "latency_ms": 59.6,
-          "input_tokens": 450,
-          "output_tokens": 43,
-          "cost_usd": 6.2e-05,
+          "latency_ms": 981.2,
+          "input_tokens": 314,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
+          "retries": 0
+        },
+        {
+          "raw_output": "{\"category\": \"other\", \"merchant\": \"Amazon\", \"confidence\": 0.8}",
+          "parsed": {
+            "category": "other",
+            "merchant": "Amazon",
+            "confidence": 0.8
+          },
+          "error": null,
+          "latency_ms": 836.6,
+          "input_tokens": 314,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -942,16 +942,16 @@
         {
           "validator": "exact_match",
           "passed": true,
-          "reason": "majority voted 'other' (other=2, utilities=1)"
+          "reason": "majority voted 'other' (other=3)"
         },
         {
           "validator": "consistency",
-          "passed": false,
-          "reason": "runs disagreed across 2 categories: other, utilities"
+          "passed": true,
+          "reason": "all 3 runs agreed on 'other'"
         }
       ],
-      "passed": false,
-      "flakiness": 0.3333
+      "passed": true,
+      "flakiness": 0.0
     },
     {
       "case": {
@@ -967,45 +967,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"utilities\", \"merchant\": null, \"confidence\": 0.94}",
+          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Amazon Web Services\", \"confidence\": 1.0}",
           "parsed": {
             "category": "utilities",
-            "merchant": null,
-            "confidence": 0.94
+            "merchant": "Amazon Web Services",
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 111.5,
-          "input_tokens": 462,
-          "output_tokens": 41,
-          "cost_usd": 6.3e-05,
+          "latency_ms": 1433.6,
+          "input_tokens": 323,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"utilities\", \"merchant\": null, \"confidence\": 0.94}",
+          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Amazon Web Services\", \"confidence\": 1.0}",
           "parsed": {
             "category": "utilities",
-            "merchant": null,
-            "confidence": 0.94
+            "merchant": "Amazon Web Services",
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 63.2,
-          "input_tokens": 438,
-          "output_tokens": 35,
-          "cost_usd": 5.8e-05,
+          "latency_ms": 715.7,
+          "input_tokens": 323,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"utilities\", \"merchant\": null, \"confidence\": 0.94}",
+          "raw_output": "{\"category\": \"utilities\", \"merchant\": \"Amazon Web Services\", \"confidence\": 1.0}",
           "parsed": {
             "category": "utilities",
-            "merchant": null,
-            "confidence": 0.94
+            "merchant": "Amazon Web Services",
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 117.7,
-          "input_tokens": 436,
-          "output_tokens": 40,
-          "cost_usd": 6e-05,
+          "latency_ms": 1080.4,
+          "input_tokens": 323,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -1043,45 +1043,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Uber Eats\", \"confidence\": 0.94}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Uber Eats\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
             "merchant": "Uber Eats",
-            "confidence": 0.94
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 66.6,
-          "input_tokens": 442,
-          "output_tokens": 40,
-          "cost_usd": 6e-05,
+          "latency_ms": 659.8,
+          "input_tokens": 317,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Uber Eats\", \"confidence\": 0.94}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Uber Eats\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
             "merchant": "Uber Eats",
-            "confidence": 0.94
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 119.2,
-          "input_tokens": 466,
-          "output_tokens": 33,
-          "cost_usd": 6e-05,
+          "latency_ms": 895.4,
+          "input_tokens": 317,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Uber Eats\", \"confidence\": 0.94}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Uber Eats\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
             "merchant": "Uber Eats",
-            "confidence": 0.94
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 98.1,
-          "input_tokens": 431,
-          "output_tokens": 28,
-          "cost_usd": 5.4e-05,
+          "latency_ms": 2483.9,
+          "input_tokens": 317,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -1119,45 +1119,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"transfers\", \"merchant\": \"PayPal\", \"confidence\": 0.58}",
+          "raw_output": "{\"category\": \"transfers\", \"merchant\": \"PayPal\", \"confidence\": 0.95}",
           "parsed": {
             "category": "transfers",
             "merchant": "PayPal",
-            "confidence": 0.58
+            "confidence": 0.95
           },
           "error": null,
-          "latency_ms": 80.1,
-          "input_tokens": 433,
-          "output_tokens": 39,
-          "cost_usd": 5.9e-05,
+          "latency_ms": 1760.9,
+          "input_tokens": 323,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"transfers\", \"merchant\": \"PayPal\", \"confidence\": 0.58}",
+          "raw_output": "{\"category\": \"transfers\", \"merchant\": \"PayPal\", \"confidence\": 0.95}",
           "parsed": {
             "category": "transfers",
             "merchant": "PayPal",
-            "confidence": 0.58
+            "confidence": 0.95
           },
           "error": null,
-          "latency_ms": 144.6,
-          "input_tokens": 451,
-          "output_tokens": 42,
-          "cost_usd": 6.2e-05,
+          "latency_ms": 1652.6,
+          "input_tokens": 323,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"transfers\", \"merchant\": \"PayPal\", \"confidence\": 0.58}",
+          "raw_output": "{\"category\": \"transfers\", \"merchant\": \"PayPal\", \"confidence\": 0.95}",
           "parsed": {
             "category": "transfers",
             "merchant": "PayPal",
-            "confidence": 0.58
+            "confidence": 0.95
           },
           "error": null,
-          "latency_ms": 90.2,
-          "input_tokens": 463,
-          "output_tokens": 34,
-          "cost_usd": 6e-05,
+          "latency_ms": 1092.7,
+          "input_tokens": 323,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -1195,45 +1195,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Shell\", \"confidence\": 0.91}",
+          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Shell\", \"confidence\": 1.0}",
           "parsed": {
             "category": "transport",
             "merchant": "Shell",
-            "confidence": 0.91
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 65.0,
-          "input_tokens": 437,
-          "output_tokens": 43,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 782.4,
+          "input_tokens": 317,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Shell\", \"confidence\": 0.91}",
+          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Shell\", \"confidence\": 1.0}",
           "parsed": {
             "category": "transport",
             "merchant": "Shell",
-            "confidence": 0.91
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 51.9,
-          "input_tokens": 450,
-          "output_tokens": 37,
-          "cost_usd": 6e-05,
-          "retries": 0
+          "latency_ms": 3926.2,
+          "input_tokens": 317,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
+          "retries": 1
         },
         {
-          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Shell\", \"confidence\": 0.91}",
+          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Shell\", \"confidence\": 1.0}",
           "parsed": {
             "category": "transport",
             "merchant": "Shell",
-            "confidence": 0.91
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 139.9,
-          "input_tokens": 431,
-          "output_tokens": 32,
-          "cost_usd": 5.6e-05,
+          "latency_ms": 820.0,
+          "input_tokens": 317,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -1271,45 +1271,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": \"Apple\", \"confidence\": 0.5}",
-          "parsed": {
-            "category": "other",
-            "merchant": "Apple",
-            "confidence": 0.5
-          },
-          "error": null,
-          "latency_ms": 114.7,
-          "input_tokens": 433,
-          "output_tokens": 42,
-          "cost_usd": 6e-05,
-          "retries": 0
-        },
-        {
-          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Apple\", \"confidence\": 0.64}",
+          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Apple\", \"confidence\": 1.0}",
           "parsed": {
             "category": "entertainment",
             "merchant": "Apple",
-            "confidence": 0.64
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 101.1,
-          "input_tokens": 442,
-          "output_tokens": 43,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 672.7,
+          "input_tokens": 321,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Apple\", \"confidence\": 0.61}",
+          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Apple\", \"confidence\": 1.0}",
           "parsed": {
             "category": "entertainment",
             "merchant": "Apple",
-            "confidence": 0.61
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 96.2,
-          "input_tokens": 441,
-          "output_tokens": 29,
-          "cost_usd": 5.6e-05,
+          "latency_ms": 962.5,
+          "input_tokens": 321,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
+          "retries": 0
+        },
+        {
+          "raw_output": "{\"category\": \"entertainment\", \"merchant\": \"Apple\", \"confidence\": 1.0}",
+          "parsed": {
+            "category": "entertainment",
+            "merchant": "Apple",
+            "confidence": 1.0
+          },
+          "error": null,
+          "latency_ms": 820.0,
+          "input_tokens": 321,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -1322,16 +1322,16 @@
         {
           "validator": "exact_match",
           "passed": true,
-          "reason": "majority voted 'entertainment' (entertainment=2, other=1) (expected merchant 'Apple', got: ['Apple'])"
+          "reason": "majority voted 'entertainment' (entertainment=3) (expected merchant 'Apple', got: ['Apple'])"
         },
         {
           "validator": "consistency",
-          "passed": false,
-          "reason": "runs disagreed across 2 categories: entertainment, other"
+          "passed": true,
+          "reason": "all 3 runs agreed on 'entertainment'"
         }
       ],
-      "passed": false,
-      "flakiness": 0.3333
+      "passed": true,
+      "flakiness": 0.0
     },
     {
       "case": {
@@ -1347,45 +1347,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.86}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.0}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.86
+            "confidence": 0.0
           },
           "error": null,
-          "latency_ms": 146.0,
-          "input_tokens": 441,
-          "output_tokens": 40,
-          "cost_usd": 6e-05,
+          "latency_ms": 1645.5,
+          "input_tokens": 310,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.86}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.0}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.86
+            "confidence": 0.0
           },
           "error": null,
-          "latency_ms": 66.5,
-          "input_tokens": 434,
-          "output_tokens": 40,
-          "cost_usd": 5.9e-05,
+          "latency_ms": 692.4,
+          "input_tokens": 310,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.86}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.0}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.86
+            "confidence": 0.0
           },
           "error": null,
-          "latency_ms": 94.5,
-          "input_tokens": 443,
-          "output_tokens": 44,
-          "cost_usd": 6.2e-05,
+          "latency_ms": 1145.8,
+          "input_tokens": 310,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -1423,45 +1423,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.92}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.0}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.92
+            "confidence": 0.0
           },
           "error": null,
-          "latency_ms": 110.9,
-          "input_tokens": 464,
-          "output_tokens": 41,
-          "cost_usd": 6.3e-05,
+          "latency_ms": 713.6,
+          "input_tokens": 312,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.92}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.0}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.92
+            "confidence": 0.0
           },
           "error": null,
-          "latency_ms": 53.8,
-          "input_tokens": 438,
-          "output_tokens": 33,
-          "cost_usd": 5.7e-05,
+          "latency_ms": 923.7,
+          "input_tokens": 312,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.92}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.0}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.92
+            "confidence": 0.0
           },
           "error": null,
-          "latency_ms": 116.0,
-          "input_tokens": 454,
-          "output_tokens": 37,
-          "cost_usd": 6e-05,
+          "latency_ms": 874.9,
+          "input_tokens": 312,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -1499,45 +1499,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Burger King\", \"confidence\": 0.84}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Burger King\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
             "merchant": "Burger King",
-            "confidence": 0.84
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 137.9,
-          "input_tokens": 437,
-          "output_tokens": 44,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 792.2,
+          "input_tokens": 319,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Burger King\", \"confidence\": 0.84}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Burger King\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
             "merchant": "Burger King",
-            "confidence": 0.84
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 121.8,
-          "input_tokens": 441,
-          "output_tokens": 36,
-          "cost_usd": 5.8e-05,
+          "latency_ms": 915.7,
+          "input_tokens": 319,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Burger King\", \"confidence\": 0.84}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Burger King\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
             "merchant": "Burger King",
-            "confidence": 0.84
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 115.1,
-          "input_tokens": 456,
-          "output_tokens": 37,
-          "cost_usd": 6e-05,
+          "latency_ms": 796.2,
+          "input_tokens": 319,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -1575,63 +1575,67 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.25}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.0}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.25
+            "confidence": 0.0
           },
           "error": null,
-          "latency_ms": 140.6,
-          "input_tokens": 444,
-          "output_tokens": 28,
-          "cost_usd": 5.6e-05,
+          "latency_ms": 731.5,
+          "input_tokens": 314,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "I could not identify a transaction in this input.",
-          "parsed": null,
-          "error": "invalid JSON: Expecting value (pos 0)",
-          "latency_ms": 116.8,
-          "input_tokens": 447,
-          "output_tokens": 31,
-          "cost_usd": 5.7e-05,
-          "retries": 0
-        },
-        {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.2}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.0}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.2
+            "confidence": 0.0
           },
           "error": null,
-          "latency_ms": 77.5,
-          "input_tokens": 450,
-          "output_tokens": 44,
-          "cost_usd": 6.3e-05,
+          "latency_ms": 1110.4,
+          "input_tokens": 314,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
+        },
+        {
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.0}",
+          "parsed": {
+            "category": "other",
+            "merchant": null,
+            "confidence": 0.0
+          },
+          "error": null,
+          "latency_ms": 1364.6,
+          "input_tokens": 314,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
+          "retries": 1
         }
       ],
       "validations": [
         {
           "validator": "schema",
-          "passed": false,
-          "reason": "1/3 runs failed schema validation (run 1: invalid JSON: Expecting value (pos 0))"
+          "passed": true,
+          "reason": "all 3 runs returned valid JSON matching the schema"
         },
         {
           "validator": "exact_match",
           "passed": true,
-          "reason": "majority voted 'other' (other=2)"
+          "reason": "majority voted 'other' (other=3)"
         },
         {
           "validator": "consistency",
-          "passed": false,
-          "reason": "one or more runs produced no parseable output"
+          "passed": true,
+          "reason": "all 3 runs agreed on 'other'"
         }
       ],
-      "passed": false,
-      "flakiness": 0.3333
+      "passed": true,
+      "flakiness": 0.0
     },
     {
       "case": {
@@ -1647,45 +1651,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.95}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.2}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.95
+            "confidence": 0.2
           },
           "error": null,
-          "latency_ms": 138.1,
-          "input_tokens": 441,
-          "output_tokens": 28,
-          "cost_usd": 5.5e-05,
+          "latency_ms": 660.6,
+          "input_tokens": 521,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.95}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.2}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.95
+            "confidence": 0.2
           },
           "error": null,
-          "latency_ms": 69.9,
-          "input_tokens": 459,
-          "output_tokens": 38,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 980.3,
+          "input_tokens": 521,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.95}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.2}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.95
+            "confidence": 0.2
           },
           "error": null,
-          "latency_ms": 97.5,
-          "input_tokens": 440,
-          "output_tokens": 39,
-          "cost_usd": 6e-05,
+          "latency_ms": 903.6,
+          "input_tokens": 521,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -1723,45 +1727,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Carrefour\", \"confidence\": 0.89}",
+          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Carrefour\", \"confidence\": 1.0}",
           "parsed": {
             "category": "groceries",
             "merchant": "Carrefour",
-            "confidence": 0.89
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 97.3,
-          "input_tokens": 466,
-          "output_tokens": 34,
-          "cost_usd": 6e-05,
+          "latency_ms": 887.8,
+          "input_tokens": 323,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Carrefour\", \"confidence\": 0.89}",
+          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Carrefour\", \"confidence\": 1.0}",
           "parsed": {
             "category": "groceries",
             "merchant": "Carrefour",
-            "confidence": 0.89
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 98.6,
-          "input_tokens": 447,
-          "output_tokens": 34,
-          "cost_usd": 5.8e-05,
+          "latency_ms": 977.0,
+          "input_tokens": 323,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Carrefour\", \"confidence\": 0.89}",
+          "raw_output": "{\"category\": \"groceries\", \"merchant\": \"Carrefour\", \"confidence\": 1.0}",
           "parsed": {
             "category": "groceries",
             "merchant": "Carrefour",
-            "confidence": 0.89
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 130.9,
-          "input_tokens": 466,
-          "output_tokens": 36,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 994.9,
+          "input_tokens": 323,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -1806,38 +1810,38 @@
             "confidence": 0.95
           },
           "error": null,
-          "latency_ms": 135.1,
-          "input_tokens": 436,
-          "output_tokens": 41,
-          "cost_usd": 6e-05,
+          "latency_ms": 1049.3,
+          "input_tokens": 317,
+          "output_tokens": 22,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Starbucks\", \"confidence\": 0.95}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Starbucks\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
             "merchant": "Starbucks",
-            "confidence": 0.95
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 146.0,
-          "input_tokens": 447,
-          "output_tokens": 30,
-          "cost_usd": 5.7e-05,
+          "latency_ms": 820.4,
+          "input_tokens": 317,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Starbucks\", \"confidence\": 0.95}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Starbucks\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
             "merchant": "Starbucks",
-            "confidence": 0.95
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 91.0,
-          "input_tokens": 438,
-          "output_tokens": 31,
-          "cost_usd": 5.6e-05,
+          "latency_ms": 921.0,
+          "input_tokens": 317,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -1875,45 +1879,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 0.93}",
+          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 1.0}",
           "parsed": {
             "category": "transport",
             "merchant": "Uber",
-            "confidence": 0.93
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 85.3,
-          "input_tokens": 441,
-          "output_tokens": 31,
-          "cost_usd": 5.6e-05,
+          "latency_ms": 1024.3,
+          "input_tokens": 325,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 0.93}",
+          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 1.0}",
           "parsed": {
             "category": "transport",
             "merchant": "Uber",
-            "confidence": 0.93
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 107.4,
-          "input_tokens": 450,
-          "output_tokens": 33,
-          "cost_usd": 5.8e-05,
+          "latency_ms": 1595.2,
+          "input_tokens": 325,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 0.93}",
+          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 1.0}",
           "parsed": {
             "category": "transport",
             "merchant": "Uber",
-            "confidence": 0.93
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 61.8,
-          "input_tokens": 433,
-          "output_tokens": 39,
-          "cost_usd": 5.9e-05,
+          "latency_ms": 683.5,
+          "input_tokens": 325,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -1951,45 +1955,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.93}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.2}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.93
+            "confidence": 0.2
           },
           "error": null,
-          "latency_ms": 107.9,
-          "input_tokens": 434,
-          "output_tokens": 28,
-          "cost_usd": 5.5e-05,
+          "latency_ms": 1085.0,
+          "input_tokens": 321,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.93}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.2}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.93
+            "confidence": 0.2
           },
           "error": null,
-          "latency_ms": 118.2,
-          "input_tokens": 433,
-          "output_tokens": 31,
-          "cost_usd": 5.6e-05,
+          "latency_ms": 940.4,
+          "input_tokens": 321,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.93}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.2}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.93
+            "confidence": 0.2
           },
           "error": null,
-          "latency_ms": 128.3,
-          "input_tokens": 450,
-          "output_tokens": 34,
-          "cost_usd": 5.9e-05,
+          "latency_ms": 878.7,
+          "input_tokens": 321,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -2027,45 +2031,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.85}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.1}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.85
+            "confidence": 0.1
           },
           "error": null,
-          "latency_ms": 68.2,
-          "input_tokens": 446,
-          "output_tokens": 41,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 1473.2,
+          "input_tokens": 316,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
+          "retries": 1
+        },
+        {
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.1}",
+          "parsed": {
+            "category": "other",
+            "merchant": null,
+            "confidence": 0.1
+          },
+          "error": null,
+          "latency_ms": 1022.8,
+          "input_tokens": 316,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.85}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.1}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.85
+            "confidence": 0.1
           },
           "error": null,
-          "latency_ms": 122.7,
-          "input_tokens": 457,
-          "output_tokens": 31,
-          "cost_usd": 5.8e-05,
-          "retries": 0
-        },
-        {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.85}",
-          "parsed": {
-            "category": "other",
-            "merchant": null,
-            "confidence": 0.85
-          },
-          "error": null,
-          "latency_ms": 101.2,
-          "input_tokens": 465,
-          "output_tokens": 39,
-          "cost_usd": 6.2e-05,
+          "latency_ms": 1023.8,
+          "input_tokens": 316,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -2103,45 +2107,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.86}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.2}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.86
+            "confidence": 0.2
           },
           "error": null,
-          "latency_ms": 79.6,
-          "input_tokens": 449,
-          "output_tokens": 31,
-          "cost_usd": 5.7e-05,
+          "latency_ms": 820.8,
+          "input_tokens": 330,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.86}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.2}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.86
+            "confidence": 0.2
           },
           "error": null,
-          "latency_ms": 76.9,
-          "input_tokens": 459,
-          "output_tokens": 29,
-          "cost_usd": 5.8e-05,
+          "latency_ms": 1331.0,
+          "input_tokens": 330,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.86}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.2}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.86
+            "confidence": 0.2
           },
           "error": null,
-          "latency_ms": 92.4,
-          "input_tokens": 462,
-          "output_tokens": 36,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 919.1,
+          "input_tokens": 330,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -2186,45 +2190,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": null, \"confidence\": 0.98}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Starbucks\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
-            "merchant": null,
-            "confidence": 0.98
+            "merchant": "Starbucks",
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 146.8,
-          "input_tokens": 437,
-          "output_tokens": 37,
-          "cost_usd": 5.8e-05,
+          "latency_ms": 719.1,
+          "input_tokens": 347,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": null, \"confidence\": 0.98}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Starbucks\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
-            "merchant": null,
-            "confidence": 0.98
+            "merchant": "Starbucks",
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 74.6,
-          "input_tokens": 457,
-          "output_tokens": 28,
-          "cost_usd": 5.7e-05,
+          "latency_ms": 1835.7,
+          "input_tokens": 347,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"dining\", \"merchant\": null, \"confidence\": 0.98}",
+          "raw_output": "{\"category\": \"dining\", \"merchant\": \"Starbucks\", \"confidence\": 1.0}",
           "parsed": {
             "category": "dining",
-            "merchant": null,
-            "confidence": 0.98
+            "merchant": "Starbucks",
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 60.6,
-          "input_tokens": 452,
-          "output_tokens": 29,
-          "cost_usd": 5.7e-05,
+          "latency_ms": 1554.5,
+          "input_tokens": 347,
+          "output_tokens": 21,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -2269,45 +2273,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.97}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.1}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.97
+            "confidence": 0.1
           },
           "error": null,
-          "latency_ms": 82.6,
-          "input_tokens": 451,
-          "output_tokens": 37,
-          "cost_usd": 6e-05,
+          "latency_ms": 772.2,
+          "input_tokens": 331,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.97}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.1}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.97
+            "confidence": 0.1
           },
           "error": null,
-          "latency_ms": 143.3,
-          "input_tokens": 438,
-          "output_tokens": 44,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 2940.6,
+          "input_tokens": 331,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.97}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.1}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.97
+            "confidence": 0.1
           },
           "error": null,
-          "latency_ms": 110.5,
-          "input_tokens": 450,
-          "output_tokens": 28,
-          "cost_usd": 5.6e-05,
+          "latency_ms": 986.1,
+          "input_tokens": 331,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -2350,45 +2354,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"transfers\", \"merchant\": null, \"confidence\": 0.95}",
+          "raw_output": "{\"category\": \"transfers\", \"merchant\": null, \"confidence\": 0.9}",
           "parsed": {
             "category": "transfers",
             "merchant": null,
-            "confidence": 0.95
+            "confidence": 0.9
           },
           "error": null,
-          "latency_ms": 119.9,
-          "input_tokens": 437,
-          "output_tokens": 33,
-          "cost_usd": 5.7e-05,
+          "latency_ms": 1320.7,
+          "input_tokens": 339,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"transfers\", \"merchant\": null, \"confidence\": 0.95}",
+          "raw_output": "{\"category\": \"transfers\", \"merchant\": null, \"confidence\": 0.9}",
           "parsed": {
             "category": "transfers",
             "merchant": null,
-            "confidence": 0.95
+            "confidence": 0.9
           },
           "error": null,
-          "latency_ms": 89.0,
-          "input_tokens": 451,
-          "output_tokens": 34,
-          "cost_usd": 5.9e-05,
+          "latency_ms": 1952.8,
+          "input_tokens": 339,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"transfers\", \"merchant\": null, \"confidence\": 0.95}",
+          "raw_output": "{\"category\": \"transfers\", \"merchant\": null, \"confidence\": 0.9}",
           "parsed": {
             "category": "transfers",
             "merchant": null,
-            "confidence": 0.95
+            "confidence": 0.9
           },
           "error": null,
-          "latency_ms": 124.6,
-          "input_tokens": 452,
-          "output_tokens": 37,
-          "cost_usd": 6e-05,
+          "latency_ms": 881.0,
+          "input_tokens": 339,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -2433,45 +2437,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"transport\", \"merchant\": null, \"confidence\": 0.98}",
+          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 1.0}",
           "parsed": {
             "category": "transport",
-            "merchant": null,
-            "confidence": 0.98
+            "merchant": "Uber",
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 79.3,
-          "input_tokens": 437,
-          "output_tokens": 29,
-          "cost_usd": 5.5e-05,
+          "latency_ms": 865.4,
+          "input_tokens": 354,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"transport\", \"merchant\": null, \"confidence\": 0.98}",
+          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 1.0}",
           "parsed": {
             "category": "transport",
-            "merchant": null,
-            "confidence": 0.98
+            "merchant": "Uber",
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 123.8,
-          "input_tokens": 431,
-          "output_tokens": 41,
-          "cost_usd": 6e-05,
-          "retries": 0
+          "latency_ms": 1356.3,
+          "input_tokens": 354,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
+          "retries": 1
         },
         {
-          "raw_output": "{\"category\": \"transport\", \"merchant\": null, \"confidence\": 0.98}",
+          "raw_output": "{\"category\": \"transport\", \"merchant\": \"Uber\", \"confidence\": 1.0}",
           "parsed": {
             "category": "transport",
-            "merchant": null,
-            "confidence": 0.98
+            "merchant": "Uber",
+            "confidence": 1.0
           },
           "error": null,
-          "latency_ms": 127.0,
-          "input_tokens": 452,
-          "output_tokens": 41,
-          "cost_usd": 6.2e-05,
+          "latency_ms": 844.4,
+          "input_tokens": 354,
+          "output_tokens": 20,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],
@@ -2516,45 +2520,45 @@
       },
       "runs": [
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.9}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.8}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.9
+            "confidence": 0.8
           },
           "error": null,
-          "latency_ms": 105.3,
-          "input_tokens": 467,
-          "output_tokens": 32,
-          "cost_usd": 6e-05,
+          "latency_ms": 5996.3,
+          "input_tokens": 329,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.9}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.8}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.9
+            "confidence": 0.8
           },
           "error": null,
-          "latency_ms": 106.3,
-          "input_tokens": 454,
-          "output_tokens": 40,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 973.6,
+          "input_tokens": 329,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         },
         {
-          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.9}",
+          "raw_output": "{\"category\": \"other\", \"merchant\": null, \"confidence\": 0.1}",
           "parsed": {
             "category": "other",
             "merchant": null,
-            "confidence": 0.9
+            "confidence": 0.1
           },
           "error": null,
-          "latency_ms": 113.0,
-          "input_tokens": 445,
-          "output_tokens": 41,
-          "cost_usd": 6.1e-05,
+          "latency_ms": 727.7,
+          "input_tokens": 329,
+          "output_tokens": 19,
+          "cost_usd": 0.0,
           "retries": 0
         }
       ],

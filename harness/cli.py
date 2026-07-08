@@ -127,8 +127,22 @@ def main(argv: list[str] | None = None) -> int:
         console=console,
     ) as progress:
         task = progress.add_task("Evaluating", total=len(cases))
+        done_count = [0]
+
+        def on_done(result) -> None:
+            progress.advance(task)
+            # The live bar doesn't render when output is piped to a log
+            # (CI, background runs) — emit one line per case so long
+            # rate-limited runs are observable there too.
+            if not console.is_terminal:
+                done_count[0] += 1
+                console.print(
+                    f"[{done_count[0]}/{len(cases)}] {result.case.id}: "
+                    f"{'PASS' if result.passed else 'FAIL'}"
+                )
+
         results, started_at, finished_at = asyncio.run(
-            runner.run_suite(cases, on_case_complete=lambda _: progress.advance(task))
+            runner.run_suite(cases, on_case_complete=on_done)
         )
 
     metrics = summarize(results)

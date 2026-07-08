@@ -22,6 +22,7 @@ need it, and thought tokens would eat the small output budget.
 from __future__ import annotations
 
 import os
+import re
 
 from google import genai
 from google.genai import errors as genai_errors
@@ -32,13 +33,24 @@ from harness.runner import TransientAgentError
 
 from .prompt import SYSTEM_PROMPT
 
-# gemini-2.5-flash-lite has the friendliest free-tier limits; override via
-# env for a stronger model, e.g. GEMINI_MODEL=gemini-2.5-flash.
-MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
+# Default chosen empirically (2026-07): free-tier quota buckets are per
+# model, and older models (gemini-2.5-flash-lite) allowed only a ~20-call
+# burst per day, while gemini-3.1-flash-lite sustained a full 99-call
+# suite at ~16 req/min. Override via env, e.g. GEMINI_MODEL=gemini-2.5-flash.
+MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.1-flash-lite")
 
 # HTTP statuses that a retry can plausibly fix. Everything else (401 bad
 # key, 400 malformed request) fails fast.
 _TRANSIENT_CODES = {408, 429, 500, 502, 503, 504}
+
+# Gemini 429s embed "Please retry in 5.09s" — the provider telling us
+# exactly when its quota window reopens.
+_RETRY_HINT_RE = re.compile(r"retry in ([0-9.]+)\s*s", re.IGNORECASE)
+
+
+def _retry_after_hint(exc: genai_errors.APIError) -> float | None:
+    match = _RETRY_HINT_RE.search(str(exc))
+    return float(match.group(1)) if match else None
 
 
 class GeminiTransactionAgent:
@@ -52,7 +64,19 @@ class GeminiTransactionAgent:
     def __init__(self, client: genai.Client | None = None) -> None:
         # genai.Client() reads GEMINI_API_KEY / GOOGLE_API_KEY from the
         # environment and raises at construction if neither is set.
-        self._client = client or genai.Client()
+        # Two non-defaults, both learned the hard way:
+        # - timeout: the SDK ships without a request deadline, and one
+        #   hung response would wedge the whole suite behind the
+        #   concurrency semaphore.
+        # - retry_options attempts=1: the SDK stacks its own internal
+        #   retry loop under ours; disabling it keeps the harness the
+        #   single owner of (observable, counted) retries.
+        self._client = client or genai.Client(
+            http_options=types.HttpOptions(
+                timeout=30_000,  # ms
+                retry_options=types.HttpRetryOptions(attempts=1),
+            )
+        )
 
     async def run(self, input_text: str) -> AgentResponse:
         try:
@@ -67,7 +91,10 @@ class GeminiTransactionAgent:
             )
         except genai_errors.APIError as exc:
             if exc.code in _TRANSIENT_CODES:
-                raise TransientAgentError(f"HTTP {exc.code}: {exc.message}") from exc
+                raise TransientAgentError(
+                    f"HTTP {exc.code}: {exc.message}",
+                    retry_after_s=_retry_after_hint(exc),
+                ) from exc
             raise
         usage = response.usage_metadata
         return AgentResponse(

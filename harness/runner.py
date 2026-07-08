@@ -53,7 +53,16 @@ class TransientAgentError(Exception):
     An agent facing such an SDK catches the provider error and re-raises
     the transient ones as this type; the harness never needs to know
     provider status codes.
+
+    `retry_after_s` carries the provider's own "retry in N seconds" hint
+    when one exists. Quota windows are the provider's clock, not ours —
+    honoring the hint beats guessing with exponential backoff, which
+    burns attempts faster than a per-minute window refills.
     """
+
+    def __init__(self, message: str, retry_after_s: Optional[float] = None) -> None:
+        super().__init__(message)
+        self.retry_after_s = retry_after_s
 
 
 @runtime_checkable
@@ -176,7 +185,17 @@ class Runner:
                             error=f"{type(exc).__name__}: {exc}",
                             retries=attempt,
                         )
-                    await asyncio.sleep(policy.delay(attempt))
+                    # Prefer the provider's own retry-after hint (plus a
+                    # little jitter so concurrent waiters don't stampede
+                    # the freshly-opened window); fall back to blind
+                    # exponential backoff when there is no hint.
+                    hint = getattr(exc, "retry_after_s", None)
+                    delay = (
+                        min(hint + random.random(), policy.max_delay_s)
+                        if hint is not None
+                        else policy.delay(attempt)
+                    )
+                    await asyncio.sleep(delay)
                     continue
                 latency_ms = (time.perf_counter() - start) * 1000
                 parsed, parse_error = parse_agent_output(response.text)
